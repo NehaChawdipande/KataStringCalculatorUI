@@ -12,12 +12,15 @@ export class AppComponent {
   title = 'Kata String Calculator';
   inputValue: string;
   sum: number;
-  constructor(){
+  constructor() {
     this.inputValue = '';
     this.sum = 0;
   }
 
-  calculate(): number{
-    return this.sum;
+  calculate(): number {
+    if (this.inputValue === '')
+      return 0;
+    else
+      return this.sum;
   }
 }

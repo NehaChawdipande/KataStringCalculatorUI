@@ -7,6 +7,9 @@ describe('AppComponent', () => {
     await TestBed.configureTestingModule({
       imports: [AppComponent],
     }).compileComponents();
+
+    const fixture = TestBed.createComponent(AppComponent);
+    const app: AppComponent = fixture.componentInstance;
   });
 
   it('should create the app', () => {
@@ -59,4 +62,17 @@ it('should call calculate function when button is clicked', () => {
   fixture.detectChanges();
   expect(app.calculate).toHaveBeenCalled();
 });
+
+it('should return 0 button is clicked with empty input', () => {
+  const fixture = TestBed.createComponent(AppComponent);
+  const app: AppComponent = fixture.componentInstance;
+  spyOn(app, 'calculate').and.callThrough();
+  const buttonElement =  fixture.debugElement.query(By.css('button'));; 
+  buttonElement.triggerEventHandler('click','');
+  fixture.detectChanges();
+  expect(app.calculate).toHaveBeenCalled();
+  const value = app.calculate();
+  expect(value).toBe(0);
+});
+
 });
