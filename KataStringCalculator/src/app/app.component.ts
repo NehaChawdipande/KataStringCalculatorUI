@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
@@ -6,6 +7,7 @@ import { RouterOutlet } from '@angular/router';
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet,
+    CommonModule,
     FormsModule
   ],
   templateUrl: './app.component.html',
@@ -15,6 +17,7 @@ export class AppComponent {
   title = 'Kata String Calculator';
   inputValue: string;
   sum: number;
+  showSum: boolean = false;
   constructor() {
     this.inputValue = '';
     this.sum = 0;
@@ -23,8 +26,7 @@ export class AppComponent {
   calculate(): number {
     if (this.inputValue === '') {
       this.sum = 0;
-      console.log('input null');
-
+      this.showSum=true;
       return 0;
     }
     else {
@@ -62,8 +64,14 @@ export class AppComponent {
       // Add the numbers together
       const sum = validNumbers.reduce((acc, curr) => acc + curr, 0);
       this.sum = sum;
-
+      this.showSum = true;
       return sum;
     }
+  }
+
+  clear(): void{
+    this.inputValue= '';
+    this.sum=0;
+    this.showSum = false;
   }
 }

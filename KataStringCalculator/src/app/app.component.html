@@ -1,7 +1,13 @@
 <main class="main">
   <h2>{{title}}</h2>
+  <label>Enter a string with delimiters</label>
    <input type="text" [(ngModel)]="inputValue" name="stringInput" value="inputValue" />
-   <button (click)="calculate()" name="submitButton">Submit</button>
-   <h3>Final Sum: {{sum}}</h3>
+   <div>
+    <button (click)="clear()" name="clear" id="clear">Clear</button>
+    <button (click)="calculate()" name="submitButton">Submit</button>
+
+   </div>
+   <h3 *ngIf="showSum">Final Sum: {{sum}}</h3>
+
 </main>
 <router-outlet />
