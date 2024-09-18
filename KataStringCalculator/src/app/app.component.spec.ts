@@ -40,4 +40,11 @@ describe('AppComponent', () => {
     const value = app.calculate();
     expect(value).toBe(0);
   });
+
+  it('should render input field', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement as HTMLElement;
+    expect(compiled.getElementsByTagName('stringInput')).toBeTruthy();
+  });
 });
