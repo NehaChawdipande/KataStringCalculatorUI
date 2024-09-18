@@ -16,4 +16,8 @@ export class AppComponent {
     this.inputValue = '';
     this.sum = 0;
   }
+
+  calculate(): number{
+    return this.sum;
+  }
 }

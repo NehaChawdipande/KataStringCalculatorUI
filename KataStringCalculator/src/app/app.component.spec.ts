@@ -27,10 +27,17 @@ describe('AppComponent', () => {
     expect(compiled.querySelector('h2')?.textContent).toContain('Kata String Calculator');
   });
 
-  it('should return initialized values',()=>{
+  it('should return initialized values', () => {
     const fixture = TestBed.createComponent(AppComponent);
-    const app:AppComponent = fixture.componentInstance;
-      expect(app.inputValue).toBe('');
-      expect(app.sum).toBe(0);
-  })
+    const app: AppComponent = fixture.componentInstance;
+    expect(app.inputValue).toBe('');
+    expect(app.sum).toBe(0);
+  });
+
+  it('should return 0 when calulate function is called', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app: AppComponent = fixture.componentInstance;
+    const value = app.calculate();
+    expect(value).toBe(0);
+  });
 });
