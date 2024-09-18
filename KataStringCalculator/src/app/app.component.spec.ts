@@ -17,13 +17,20 @@ describe('AppComponent', () => {
   it(`should have the 'KataStringCalculator' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('KataStringCalculator');
+    expect(app.title).toEqual('Kata String Calculator');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, KataStringCalculator');
+    expect(compiled.querySelector('h2')?.textContent).toContain('Kata String Calculator');
   });
+
+  it('should return initialized values',()=>{
+    const fixture = TestBed.createComponent(AppComponent);
+    const app:AppComponent = fixture.componentInstance;
+      expect(app.inputValue).toBe('');
+      expect(app.sum).toBe(0);
+  })
 });

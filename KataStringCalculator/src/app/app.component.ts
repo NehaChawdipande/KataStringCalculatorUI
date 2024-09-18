@@ -9,5 +9,11 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'KataStringCalculator';
+  title = 'Kata String Calculator';
+  inputValue: string;
+  sum: number;
+  constructor(){
+    this.inputValue = '';
+    this.sum = 0;
+  }
 }
