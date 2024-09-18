@@ -1,5 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { By } from '@angular/platform-browser';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
@@ -47,4 +48,15 @@ describe('AppComponent', () => {
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.getElementsByTagName('stringInput')).toBeTruthy();
   });
+
+  
+it('should call calculate function when button is clicked', () => {
+  const fixture = TestBed.createComponent(AppComponent);
+  const app: AppComponent = fixture.componentInstance;
+  spyOn(app, 'calculate').and.callThrough();
+  const buttonElement =  fixture.debugElement.query(By.css('button'));; 
+  buttonElement.triggerEventHandler('click','');
+  fixture.detectChanges();
+  expect(app.calculate).toHaveBeenCalled();
+});
 });
